@@ -244,7 +244,22 @@ require('lazy').setup({
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   -- { import = 'custom.plugins' },
+  
+  "drsooch/gruber-darker-vim",
 }, {})
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+vim.cmd [[ 
+  colorscheme GruberDarker
+  hi NonText gui=bold guifg=#666666 "virtual text
+  hi MatchParen guifg=#ffdd33 guibg=#000000 gui=bold
+  hi DiffAdd guibg=Green guifg=Black
+  hi DiffDelete guibg=LightRed guifg=Black
+  hi DiffChange guibg=LightBrown guifg=Black 
+  hi! link @variable.builtin Structure
+  hi! link Structure Type
+]]
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
