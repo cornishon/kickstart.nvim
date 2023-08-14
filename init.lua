@@ -517,7 +517,10 @@ local servers = {
   -- pyright = {},
   rust_analyzer = {
     check = {
-      command = 'clippy',
+      overrideCommand = { 'cargo', 'clippy', '--workspace', '--message-format=json', '--all-targets', '--all-features' },
+    },
+    rustfmt = {
+      extraArgs = {},
     },
   },
   -- tsserver = {},
