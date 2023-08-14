@@ -156,6 +156,22 @@ require('lazy').setup({
     end,
   },
 
+  { "folke/tokyonight.nvim" },
+
+  -- Simple colorschemes
+  "phha/zenburn.nvim",
+
+  {
+    "jesseleite/nvim-noirbuddy",
+    dependencies = {
+     "tjdevries/colorbuddy.nvim",
+      branch = "dev",
+    },
+    opts = {
+      preset = 'miami-nights',
+    },
+  },
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
