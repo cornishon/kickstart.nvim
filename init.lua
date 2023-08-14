@@ -77,6 +77,7 @@ require('lazy').setup({
       "nvim-lua/plenary.nvim",         -- required
       "nvim-telescope/telescope.nvim", -- optional
       "sindrets/diffview.nvim",        -- optional
+      "nvim-tree/nvim-web-devicons",
     },
     config = true
   },
