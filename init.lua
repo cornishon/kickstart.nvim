@@ -210,6 +210,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/playground',
     },
     build = ':TSUpdate',
   },
@@ -299,10 +300,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    cycle_layout_list = { 'bottom_pane', 'center', 'cursor', 'horizontal', 'vertical' },
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ['<C-r>'] = require('telescope.actions.layout').cycle_layout_next,
+      },
+      n = {
+        ['<Tab>'] = "move_selection_next",
+        ['<S-Tab>'] = "move_selection_previous",
+      },
+    },
+    sorting_strategy = "ascending",
+    layout_strategy = "flex",
+    layout_config = {
+      horizontal = {
+        width = 0.95,
+        preview_cutoff = 15,
+        prompt_position = "top",
       },
     },
   },
@@ -331,14 +347,18 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
+---@diagnostic disable: missing-fields
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
-
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  playground = { enable = true },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
