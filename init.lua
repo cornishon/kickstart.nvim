@@ -270,6 +270,9 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.wo.relativenumber = true
+vim.wo.cursorline = true
+vim.wo.cursorlineopt = "number"
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
